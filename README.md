@@ -43,3 +43,13 @@ Created storage account
   `--location southeastasia \`  
   `--sku Standard_RAGRS \`  
   `--kind StorageV2`  
+
+Enable static website hosting from blob storage  
+
+`az storage blob service-properties update --account-name jltrcloudresumechallenge --static-website --404-document 404.html --index-document resume.html`  
+
+Upload required files onto a $web container  
+`az storage blob upload-batch -s /home/jason/Documents/GitHub/cloud-resume-challenge -d '$web' --account-name jltrcloudresumechallenge`  
+
+Get the URL of the website  
+`az storage account show -n jltrcloudresumechallenge -g storage-resource-group --query "primaryEndpoints.web" --output tsv`

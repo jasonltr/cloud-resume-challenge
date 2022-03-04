@@ -1,4 +1,4 @@
-# Cloud resume challenge #
+# [Cloud resume challenge](https://cloudresumechallenge.dev/docs/the-challenge/azure/) #
 
 ## Set up Git Repo ##
 I intialised a git repo from my terminal using the following commands  
@@ -50,3 +50,7 @@ Upload required files onto a $web container
 
 Get the URL of the website  
 `az storage account show -n jltrcloudresumechallenge -g storage-resource-group --query "primaryEndpoints.web" --output tsv`
+[URL](https://jltrcloudresumechallenge.z23.web.core.windows.net/)  
+  
+
+

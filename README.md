@@ -25,6 +25,18 @@ Starting editing on VS code subsequently
   
 Uploaded html and css files, got the template from [SRT](https://sampleresumetemplate.net/)  
   
+## Azure ##  
+  
+Did `az login`
+  
+Created resource group  
+
+`az group create \`
+  `--name storage-resource-group \`
+  `--location southeastasia`  
+  
+Created storage account
+
 `az storage account create \`  
   `--name jltrcloudresumechallenge\`  
   `--resource-group storage-resource-group \`  

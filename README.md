@@ -31,8 +31,8 @@ Did `az login`
   
 Created resource group  
 
-`az group create \`
-  `--name storage-resource-group \`
+`az group create \`  
+  `--name storage-resource-group \`  
   `--location southeastasia`  
   
 Created storage account

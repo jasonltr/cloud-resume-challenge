@@ -53,6 +53,7 @@ Get the URL of the website
 [URL](https://jltrcloudresumechallenge.z23.web.core.windows.net/)  
   
 ## DNS rerouting to my own custom domain ##  
+WIP
   
 
 

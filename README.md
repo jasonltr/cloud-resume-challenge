@@ -49,8 +49,10 @@ Upload required files onto a $web container
 `az storage blob upload-batch -s /home/jason/Documents/GitHub/cloud-resume-challenge -d '$web' --account-name jltrcloudresumechallenge`  
 
 Get the URL of the website  
-`az storage account show -n jltrcloudresumechallenge -g storage-resource-group --query "primaryEndpoints.web" --output tsv`
+`az storage account show -n jltrcloudresumechallenge -g storage-resource-group --query "primaryEndpoints.web" --output tsv`  
 [URL](https://jltrcloudresumechallenge.z23.web.core.windows.net/)  
+  
+# DNS rerouting to my own custom domain #  
   
 
 

@@ -52,7 +52,7 @@ Get the URL of the website
 `az storage account show -n jltrcloudresumechallenge -g storage-resource-group --query "primaryEndpoints.web" --output tsv`  
 [URL](https://jltrcloudresumechallenge.z23.web.core.windows.net/)  
   
-# DNS rerouting to my own custom domain #  
+## DNS rerouting to my own custom domain ##  
   
 
 

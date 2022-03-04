@@ -25,9 +25,9 @@ Starting editing on VS code subsequently
   
 Uploaded html and css files, got the template from [SRT](https://sampleresumetemplate.net/)  
   
-`az storage account create \  
-  --name jltrcloudresumechallenge\  
-  --resource-group storage-resource-group \  
-  --location southeastasia \  
-  --sku Standard_RAGRS \  
-  --kind StorageV2`  
+`az storage account create \`  
+  `--name jltrcloudresumechallenge\`  
+  `--resource-group storage-resource-group \`  
+  `--location southeastasia \`  
+  `--sku Standard_RAGRS \`  
+  `--kind StorageV2`  

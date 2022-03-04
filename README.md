@@ -30,13 +30,11 @@ Uploaded html and css files, got the template from [SRT](https://sampleresumetem
 Did `az login`
   
 Created resource group  
-
 `az group create \`  
   `--name storage-resource-group \`  
   `--location southeastasia`  
   
 Created storage account
-
 `az storage account create \`  
   `--name jltrcloudresumechallenge\`  
   `--resource-group storage-resource-group \`  
@@ -45,7 +43,6 @@ Created storage account
   `--kind StorageV2`  
 
 Enable static website hosting from blob storage  
-
 `az storage blob service-properties update --account-name jltrcloudresumechallenge --static-website --404-document 404.html --index-document resume.html`  
 
 Upload required files onto a $web container  

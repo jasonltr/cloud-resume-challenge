@@ -34,7 +34,7 @@ Created resource group
   `--name storage-resource-group \`  
   `--location southeastasia`  
   
-Created storage account
+Created storage account  
 `az storage account create \`  
   `--name jltrcloudresumechallenge\`  
   `--resource-group storage-resource-group \`  

@@ -53,7 +53,7 @@ Get the URL of the website
 [URL](https://jltrcloudresumechallenge.z23.web.core.windows.net/)  
   
 ## DNS rerouting to my own custom domain ##  
-Bought my own customr domain jasonltr.com on Cloudflare
+Bought my own customr domain jasonltr.com on Cloudflare  
 Created a CDN endpoint on Azure following [tutorial](https://docs.microsoft.com/en-us/azure/storage/blobs/static-website-content-delivery-network)  
 Created the relevant CNAMES on Cloudflare dashboard to do the redirecting  
 Enabled https only on Cloudflare and no www. required when entering my URL  

@@ -55,5 +55,8 @@ Get the URL of the website
 ## DNS rerouting to my own custom domain ##  
 WIP
   
+## Web Counter (local machine only) ##  
+I followed a tutorial online [link](https://contactmentor.com/build-website-visitor-counter-javascript/)  
+Used their default index.js and modified my CSS accordingly to get the formatting right  
 
 

@@ -53,15 +53,16 @@ Get the URL of the website
 [URL](https://jltrcloudresumechallenge.z23.web.core.windows.net/)  
   
 ## DNS rerouting to my own custom domain ##  
-Bought my own customr domain [jasonltr.com](jasonltr.com) on Cloudflare for a year  
+Bought my own customr domain jasonltr.com on Cloudflare
 Created a CDN endpoint on Azure following [tutorial](https://docs.microsoft.com/en-us/azure/storage/blobs/static-website-content-delivery-network)  
 Created the relevant CNAMES on Cloudflare dashboard to do the redirecting  
 Enabled https only on Cloudflare and no www. required when entering my URL  
 So just entering jasonltr.com should work  
 
   
-## Web Counter (local machine only) ##  
+## Web Counter using javascript (local machine only) ##  
 I followed a tutorial online [link](https://contactmentor.com/build-website-visitor-counter-javascript/)  
 Used their default index.js and modified my CSS accordingly to get the formatting right  
+Webcounter is now available on the bottom of the page  
 
 

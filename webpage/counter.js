@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     getVisitCount();
 });
 
-const apiGateway = 'https://getcounterjltr.azurewebsites.net/api/HttpTrigger1counter?code=hxxcoXuvu0qbp/elm089NRCTdPGdQSoRoJ6MuBe3WDB1m8NQqW9HDw=='
+const apiGateway = 'https://jltrcloudresume.azurewebsites.net/api/HttpTrigger1?'
 const getVisitCount = () => {
     let count = 0;
 

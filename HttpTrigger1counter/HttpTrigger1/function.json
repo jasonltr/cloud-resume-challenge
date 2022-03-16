@@ -1,0 +1,41 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputDoc",
+      "databaseName": "counter",
+      "collectionName": "counter",
+      "connectionStringSetting": "CosmosDbConnectionString",
+      "partitionKey": "counter",
+      "id": "counter"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDoc",
+      "databaseName": "counter",
+      "collectionName": "counter",
+      "createIfNotExists": "true",
+      "connectionStringSetting": "CosmosDbConnectionString",
+      "partitionKey": "counter",
+      "id": "counter"
+    }
+  ]
+}

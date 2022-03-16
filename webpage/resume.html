@@ -11,9 +11,8 @@
 	<!-- <link rel="stylesheet" type="text/css" href="reset-font-grids.css" media="all" />  -->
 	<link rel="stylesheet" type="text/css" href="resume.css" media="all" />
 
-	<script defer src="index.js"></script>
-	<script type="text/javascript" src="js/counter.js"></script>
-</head>
+	<!-- <script defer src="index.js"></script> -->
+
 <body>
 
 <div id="doc2" class="yui-t7">
@@ -23,7 +22,8 @@
 			<div class="yui-gc">
 				<div class="yui-u first">
 					<h1>Jason Lim|林田融</h1>
-					<h2>DevOps Engineer, Trainee</h2>
+					<p id="counter"></p>
+					<h2 id ="counter">DevOps Engineer, Trainee</h2>
 				</div>
 
 				<div class="yui-u">
@@ -164,15 +164,16 @@
 			<p><a href="mailto:ltr.jason@gmail.com">email me</a></p>
 		</div>
 		<div id="counter">		
-			<div id="counter-text"><p>Website visit count:</p></div>
-			<div class="website-counter"></div>
-			<div id="counter"></div>
+			<div id="counter-text"><p>Website visit count:</p><p id="counter"></p></div>
 		</div>
+		<a id="counter"></a>
 			<!-- <div class="website-counter"></div> -->
 		</div><!--// footer -->
 
 	</div><!-- // inner -->
-
+	
+<script type = "text/javascript" src="webcounter.js"></script>
+</head>
 
 </div><!--// doc -->
 	<!-- <button id="reset">Reset</button> -->

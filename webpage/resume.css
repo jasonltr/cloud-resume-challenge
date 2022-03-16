@@ -80,65 +80,8 @@ a#pdf:hover { background: #222; }
 .yui-gf .yui-u{width:80.2%;padding-bottom: 0.000001em}
 .yui-gf div.first{width:12.3%;padding-bottom: 0.000001em}
 
-/* counter text format */
-/* #counter-text { padding: 1em 0 5em 0; font-size: 92%; border-top: 1px solid #ccc; text-align: center; } */
-/* #counter-text p { 
-    margin-bottom: 0; 
-    text-align: center; 
-    vertical-align: middle;
-  }  */
 
-
-/* counter css */
-
-
-/* counter location */
-/* #counter-text { padding: 1em 0 5em 0; font-size: 92%; border-top: 1px solid #ccc; text-align: center; } */
-
-body,
-.website-counter {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  flex-direction: column;
-}
-
-/* body {
-  height: 150vh;
-} */
-
-/* Styles for website counter container */
-.website-counter {
-  background-color: white;
-  height: 25px;
-  width: 7%;
-  color: #444;
-  border-radius: 30px;
-  font-weight: 700;
-  font-size: 12px;
-  /* margin-top: 10px; */
-  display: flex;
-  position:relative;
-  right: 30px;
-}
-
-/* Styles for reset button */
-/* #reset {
-  margin-top: 20px;
-  background-color: #008cba;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 8px 20px;
-  color: white;
-  border: 0;
-} */
-
-
-#counter {
-    display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: center;
-    align-items: center;
-    /* margin:0 ; */
-
+/* counter format */
+#counter{
+  color:#000
 }

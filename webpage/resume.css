@@ -82,6 +82,9 @@ a#pdf:hover { background: #222; }
 
 
 /* counter format */
-#counter{
-  color:#000
+#count{
+  display: flex;
+  color:#000;
+  justify-content: center;
+  align-items: center;
 }

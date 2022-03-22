@@ -26,8 +26,7 @@ jobs:
         pip install flake8 pytest
         pip install itsdangerous
         pip install requests
-        pip install json
-        pip install json schema
+        pip install jsonschema
         pip install -e
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8

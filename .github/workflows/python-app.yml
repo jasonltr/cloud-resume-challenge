@@ -7,7 +7,7 @@ on:
   push:
     branches: [ master ]
     paths:
-    - ./webpage
+    - ./webpage/**
   pull_request:
     branches: [ master ]
 

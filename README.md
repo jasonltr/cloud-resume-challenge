@@ -62,8 +62,9 @@ So just entering jasonltr.com should work
   
 ## Web Counter using javascript ##  
 I followed a tutorial online [link](https://contactmentor.com/build-website-visitor-counter-javascript/)  
-Used their default index.js and modified my CSS accordingly to get the formatting right  
-Webcounter is now available on the bottom of the page  
+Created CosmosDB, Azure Function,
+
+
 Have to enable CORS settings on Azure portal API (sorry for general instruction but just google it)  
   
 ## Testing and CI/CD workflow using github actions ##  

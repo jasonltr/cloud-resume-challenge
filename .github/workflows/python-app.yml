@@ -6,6 +6,8 @@ name: Python application
 on:
   push:
     branches: [ master ]
+    paths:
+    - "/webpage"
   pull_request:
     branches: [ master ]
 

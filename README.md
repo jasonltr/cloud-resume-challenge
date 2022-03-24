@@ -60,7 +60,7 @@ Enabled https only on Cloudflare and no www. required when entering my URL
 So just entering jasonltr.com should work  
 
   
-## Web Counter using javascript (local machine only) ##  
+## Web Counter using javascript ##  
 I followed a tutorial online [link](https://contactmentor.com/build-website-visitor-counter-javascript/)  
 Used their default index.js and modified my CSS accordingly to get the formatting right  
 Webcounter is now available on the bottom of the page  
@@ -73,6 +73,9 @@ Wrote the two YAML files to provide the sequence of events to be triggered when 
   
 The first YAML file is to run the test script   
   
-The second YAML file is to automatically upload my updated frontend files onto the blob storage and to purge the CDN endpoint to update my website   
-
+The second YAML file is to automatically upload my updated frontend files onto the blob storage and to purge the CDN endpoint to update my website.  
+There is a need to configure the credentials from your azure account. I created a service principal using  
+`az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscriptionid>/resourceGroups/<resource group name> --sdk-auth`  
+Copied the Json output and went to my Github repo, created a secret and pasted the Json there and gave the secret a name  
+The YAML file will call this secret using `${{ secrets.AZURE_CREDENTIALS }}`  
 

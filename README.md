@@ -64,5 +64,15 @@ So just entering jasonltr.com should work
 I followed a tutorial online [link](https://contactmentor.com/build-website-visitor-counter-javascript/)  
 Used their default index.js and modified my CSS accordingly to get the formatting right  
 Webcounter is now available on the bottom of the page  
+Have to enable CORS settings on Azure portal API (sorry for general instruction but just google it)  
+  
+## Testing and CI/CD workflow using github actions ##  
+Wrote python script under test to test the urls to ensure a 200 response is returned AKA instead of manually checking all the urls by clicking on them manually the pythong script does it for me  
+  
+Wrote the two YAML files to provide the sequence of events to be triggered when a push to [master] branch webpage directory. 
+  
+The first YAML file is to run the test script   
+  
+The second YAML file is to automatically upload my updated frontend files onto the blob storage and to purge the CDN endpoint to update my website   
 
 

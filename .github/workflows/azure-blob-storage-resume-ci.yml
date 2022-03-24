@@ -16,13 +16,13 @@ jobs:
     - name: Upload to blob storage
       uses: azure/CLI@v1
       with:
-        azcliversion: 2.0.72
+        azcliversion: 2.34.1
         inlineScript: |
             az storage blob upload-batch --account-name jltrcloudresumechallenge -d '$web' -s "./webpage/" --overwrite
     - name: Purge CDN endpoint
       uses: azure/CLI@v1
       with:
-        azcliversion: 2.0.72
+        azcliversion: 2.34.1
         inlineScript: |
            az cdn endpoint purge --content-paths  "/*" --profile-name "jltrresume" --name "jltrcloudresumechallenge" --resource-group "storage-resource-group"
     # Azure logout 

@@ -80,3 +80,4 @@ There is a need to configure the credentials from your azure account. I created 
 Copied the Json output and went to my Github repo, created a secret and pasted the Json there and gave the secret a name  
 The YAML file will call this secret using `${{ secrets.AZURE_CREDENTIALS }}`  
 
+#backup

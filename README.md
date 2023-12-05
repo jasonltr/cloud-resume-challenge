@@ -81,3 +81,4 @@ Copied the Json output and went to my Github repo, created a secret and pasted t
 The YAML file will call this secret using `${{ secrets.AZURE_CREDENTIALS }}`  
 
 #backup
+#backup2

@@ -79,6 +79,3 @@ There is a need to configure the credentials from your azure account. I created 
 `az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscriptionid>/resourceGroups/<resource group name> --sdk-auth`  
 Copied the Json output and went to my Github repo, created a secret and pasted the Json there and gave the secret a name  
 The YAML file will call this secret using `${{ secrets.AZURE_CREDENTIALS }}`  
-
-#backup
-#backup2

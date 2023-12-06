@@ -1,5 +1,5 @@
 const functionApi = 'https://jltrcloudresume.azurewebsites.net/api/HttpTrigger1?code=YrK7qxuu8GgR/vga1njxZ2kHaKJaGtGTmwa2D6aiSZvCGzOTaxYRLw=='; 
-
+// test
 const getVisitCount = () => {
     let count = 30;
     fetch(functionApi)

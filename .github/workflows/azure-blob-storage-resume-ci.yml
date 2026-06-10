@@ -1,32 +1,32 @@
-name: Blob storage website CI
+# name: Blob storage website CI
 
-on:
-    workflow_dispatch:
-    push:
-        branches: [ master ]
-        paths:
-          - webpage/**
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:            
-    - uses: actions/checkout@v2
-    - uses: azure/actions/login@v1
-      with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: Upload to blob storage
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.34.1
-        inlineScript: |
-            az storage blob upload-batch --account-name jltrcloudresumechallenge -d '$web' -s "./webpage/" --overwrite
-    - name: Purge CDN endpoint
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.34.1
-        inlineScript: |
-           az cdn endpoint purge --content-paths  "/*" --profile-name "jltrresume" --name "jltrcloudresumechallenge" --resource-group "storage-resource-group"
-    # Azure logout 
-    - name: logout
-      run: |
-            az logout
+# on:
+#     workflow_dispatch:
+#     push:
+#         branches: [ master ]
+#         paths:
+#           - webpage/**
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:            
+#     - uses: actions/checkout@v2
+#     - uses: azure/actions/login@v1
+#       with:
+#           creds: ${{ secrets.AZURE_CREDENTIALS }}
+#     - name: Upload to blob storage
+#       uses: azure/CLI@v1
+#       with:
+#         azcliversion: 2.34.1
+#         inlineScript: |
+#             az storage blob upload-batch --account-name jltrcloudresumechallenge -d '$web' -s "./webpage/" --overwrite
+#     - name: Purge CDN endpoint
+#       uses: azure/CLI@v1
+#       with:
+#         azcliversion: 2.34.1
+#         inlineScript: |
+#            az cdn endpoint purge --content-paths  "/*" --profile-name "jltrresume" --name "jltrcloudresumechallenge" --resource-group "storage-resource-group"
+#     # Azure logout 
+#     - name: logout
+#       run: |
+#             az logout

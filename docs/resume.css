@@ -1,105 +1,158 @@
 /* =====================================================================
    JASON LIM — RESUME CSS
-   Modern, minimal, professional. No frameworks, no dependencies.
+   Dark terminal aesthetic. No frameworks, no dependencies.
    ===================================================================== */
 
 /* ----- Design tokens ----- */
 :root {
-  --color-bg:        #f1f5f9;
-  --color-card:      #ffffff;
-  --color-border:    #e2e8f0;
-  --color-text:      #1e293b;
-  --color-muted:     #64748b;
-  --color-accent:    #1e40af;
-  --color-accent-lt: #dbeafe;
-  --color-link:      #1d4ed8;
+  --bg:           #07111f;
+  --surface:      #0c1828;
+  --surface-alt:  #091420;
+  --border:       #182d47;
+  --border-lt:    #1f3a58;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  --text:         #cdd9ea;
+  --text-bright:  #eaf0fa;
+  --muted:        #47607d;
+  --muted-lt:     #5e7b9e;
+
+  --accent:       #00c9a7;
+  --accent-dim:   rgba(0, 201, 167, 0.08);
+  --accent-border:rgba(0, 201, 167, 0.25);
+  --gold:         #e8a840;
+  --link:         #5fb3f5;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui,
                'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code',
+               Menlo, 'Courier New', monospace;
 
-  --radius:    6px;
-  --max-width: 860px;
-  --pad-x:     2.5rem;
-  --pad-y:     2rem;
+  --max-width: 900px;
+  --pad-x:     3rem;
+  --pad-y:     2.5rem;
 }
 
-/* ----- Reset / base ----- */
+/* ----- Reset ----- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; }
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
-  padding: 2.5rem 1rem;
+  padding: 3rem 1rem;
 }
 
 /* ----- Page wrapper ----- */
 #page {
   max-width: var(--max-width);
   margin: 0 auto;
-  background: var(--color-card);
-  border-radius: var(--radius);
-  box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0,201,167,0.04),
+    0 4px 24px rgba(0,0,0,0.5),
+    0 24px 64px rgba(0,0,0,0.3);
 }
 
 /* =====================================================================
    HEADER
    ===================================================================== */
 #site-header {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle dot-grid texture */
+#site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,201,167,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+/* Accent glow top-left */
+#site-header::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0,201,167,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header-inner {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1.5rem;
-  padding: var(--pad-y) var(--pad-x);
-  border-bottom: 3px solid var(--color-accent);
-  background: var(--color-card);
+  gap: 2rem;
+  position: relative;
 }
 
 .header-name h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--color-text);
-  line-height: 1.15;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  color: var(--text-bright);
 }
 
 .name-cjk {
-  font-size: 1.1rem;
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 2vw, 1rem);
   font-weight: 400;
-  color: var(--color-muted);
-  margin-left: 0.4rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  margin-top: 0.45rem;
 }
 
 .header-name .title {
-  margin-top: 0.25rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  margin-top: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-accent);
+  letter-spacing: 0.22em;
+  color: var(--accent);
+}
+
+.header-name .title::before {
+  content: '$ ';
+  opacity: 0.5;
 }
 
 .header-contact {
   text-align: right;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  font-size: 0.875rem;
-  color: var(--color-muted);
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted-lt);
   flex-shrink: 0;
+  padding-bottom: 0.15rem;
 }
 
 .header-contact a {
-  color: var(--color-link);
+  color: var(--link);
   text-decoration: none;
+  transition: color 0.15s;
 }
 
-.header-contact a:hover { text-decoration: underline; }
+.header-contact a:hover { color: var(--text-bright); }
 
 /* =====================================================================
    MAIN / SECTIONS
@@ -110,31 +163,41 @@ body {
 
 .resume-section {
   display: grid;
-  grid-template-columns: 11rem 1fr;
-  gap: 0 2rem;
-  padding: 1.75rem 0;
-  border-bottom: 1px solid var(--color-border);
+  grid-template-columns: 9rem 1fr;
+  gap: 0 3rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .resume-section.last-section { border-bottom: none; }
 
 .section-label {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-muted);
-  padding-top: 0.15rem;
-  line-height: 1.4;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  padding-top: 0.2rem;
+  line-height: 1.5;
+}
+
+.label-num {
+  display: block;
+  font-size: 0.58rem;
+  color: var(--accent);
+  opacity: 0.55;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.1em;
 }
 
 /* =====================================================================
    PROFILE
    ===================================================================== */
 .profile-text {
-  font-size: 1rem;
-  color: var(--color-text);
-  line-height: 1.7;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.75;
 }
 
 /* =====================================================================
@@ -148,21 +211,29 @@ body {
 }
 
 .skills-list li {
-  background: var(--color-accent-lt);
-  color: var(--color-accent);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-dim);
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.skills-list li:hover {
+  border-color: rgba(0,201,167,0.55);
+  background: rgba(0,201,167,0.13);
 }
 
 /* =====================================================================
    EXPERIENCE
    ===================================================================== */
 .job {
-  padding-bottom: 1.25rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .job.last-job {
@@ -175,8 +246,8 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+  gap: 1.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .job-meta { flex: 1; }
@@ -184,18 +255,22 @@ body {
 .job-company {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--text-bright);
+  letter-spacing: -0.2px;
 }
 
 .job-role {
-  font-size: 0.875rem;
-  color: var(--color-muted);
-  margin-top: 0.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-top: 0.2rem;
 }
 
 .job-dates {
-  font-size: 0.8rem;
-  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
   white-space: nowrap;
   padding-top: 0.15rem;
   flex-shrink: 0;
@@ -203,8 +278,8 @@ body {
 
 .job p {
   font-size: 0.875rem;
-  line-height: 1.7;
-  color: #334155;
+  line-height: 1.8;
+  color: var(--muted-lt);
 }
 
 /* =====================================================================
@@ -213,20 +288,31 @@ body {
 .edu-school {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 0.4rem;
+  color: var(--text-bright);
+  margin-bottom: 0.65rem;
 }
 
 .edu-details {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.3rem;
 }
 
 .edu-details li {
   font-size: 0.875rem;
-  color: #334155;
+  color: var(--muted-lt);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.edu-details li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 /* =====================================================================
@@ -236,21 +322,46 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.5rem;
 }
 
 .cert-list li {
   font-size: 0.875rem;
-  color: #334155;
+  color: var(--muted-lt);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.cert-list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .cert-list a,
 .edu-details a {
-  color: var(--color-link);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted-lt);
   text-decoration: none;
+  border: 1px solid var(--border-lt);
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  letter-spacing: 0.03em;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
 
-.cert-list a:hover { text-decoration: underline; }
+.cert-list a:hover,
+.edu-details a:hover {
+  color: var(--link);
+  border-color: rgba(95,179,245,0.4);
+  background: rgba(95,179,245,0.06);
+}
 
 /* =====================================================================
    FOOTER
@@ -260,63 +371,87 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem var(--pad-x);
-  background: #f8fafc;
-  border-top: 1px solid var(--color-border);
-  font-size: 0.8rem;
-  color: var(--color-muted);
+  padding: 0.9rem var(--pad-x);
+  background: var(--surface-alt);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
 }
 
 #site-footer a {
-  color: var(--color-link);
+  color: var(--muted);
   text-decoration: none;
+  transition: color 0.15s;
 }
 
-#site-footer a:hover { text-decoration: underline; }
+#site-footer a:hover { color: var(--muted-lt); }
 
 .visit-count {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.6rem;
+}
+
+.visit-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.65rem;
+}
+
+.visit-label::before {
+  content: '// ';
+  color: var(--accent);
+  opacity: 0.4;
 }
 
 #counter {
+  color: var(--accent);
   font-weight: 600;
-  color: var(--color-text);
+  font-size: 0.82rem;
 }
 
 /* =====================================================================
-   RESPONSIVE — tablet / mobile
+   RESPONSIVE
    ===================================================================== */
-@media (max-width: 680px) {
-  :root { --pad-x: 1.25rem; --pad-y: 1.5rem; }
+@media (max-width: 720px) {
+  :root {
+    --pad-x: 1.5rem;
+    --pad-y: 2rem;
+  }
 
   body { padding: 0; }
 
   #page {
     border-radius: 0;
-    box-shadow: none;
+    border-left: none;
+    border-right: none;
     min-height: 100vh;
   }
 
-  #site-header {
+  .header-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 1.25rem;
   }
 
-  .header-contact { text-align: left; }
-
-  .header-name h1 { font-size: 1.6rem; }
+  .header-contact {
+    text-align: left;
+  }
 
   .resume-section {
     grid-template-columns: 1fr;
-    gap: 0.6rem;
+    gap: 0.7rem;
+    padding: 1.5rem 0;
   }
 
+  .label-num { display: none; }
+
   .section-label {
-    font-size: 0.65rem;
-    padding-bottom: 0.1rem;
+    font-size: 0.62rem;
+    border-left: 2px solid var(--accent);
+    border-left-color: rgba(0,201,167,0.4);
+    padding-left: 0.6rem;
   }
 
   .job-header {
@@ -331,4 +466,8 @@ body {
     align-items: flex-start;
     gap: 0.5rem;
   }
+}
+
+@media (max-width: 420px) {
+  :root { --pad-x: 1.1rem; }
 }

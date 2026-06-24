@@ -35,7 +35,7 @@
 /* ----- Reset ----- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 16px; }
+html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans);
@@ -61,6 +61,35 @@ body {
 }
 
 /* =====================================================================
+   KEYFRAMES
+   ===================================================================== */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.06; }
+  50%       { opacity: 0.12; }
+}
+
+/* =====================================================================
    HEADER
    ===================================================================== */
 #site-header {
@@ -71,26 +100,27 @@ body {
   overflow: hidden;
 }
 
-/* Subtle dot-grid texture */
+/* Dot-grid texture */
 #site-header::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(0,201,167,0.08) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(0,201,167,0.07) 1px, transparent 1px);
   background-size: 28px 28px;
   pointer-events: none;
 }
 
-/* Accent glow top-left */
+/* Animated accent glow */
 #site-header::after {
   content: '';
   position: absolute;
-  top: -60px;
-  left: -60px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(0,201,167,0.06) 0%, transparent 70%);
+  top: -80px;
+  left: -80px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(0,201,167,0.09) 0%, transparent 68%);
   pointer-events: none;
+  animation: glowPulse 5s ease-in-out infinite;
 }
 
 .header-inner {
@@ -101,15 +131,18 @@ body {
   position: relative;
 }
 
-.header-name h1 {
+/* --- Hero entrance animations --- */
+.anim-hero-name {
   font-size: clamp(2.2rem, 5vw, 3.4rem);
   font-weight: 800;
   letter-spacing: -2px;
   line-height: 1.05;
   color: var(--text-bright);
+  opacity: 0;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
 }
 
-.name-cjk {
+.anim-hero-cjk {
   display: block;
   font-family: var(--font-mono);
   font-size: clamp(0.85rem, 2vw, 1rem);
@@ -117,6 +150,8 @@ body {
   letter-spacing: 0.35em;
   color: var(--gold);
   margin-top: 0.45rem;
+  opacity: 0;
+  animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
 }
 
 .header-name .title {
@@ -127,6 +162,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--accent);
+  opacity: 0;
+  animation: fadeIn 0.5s ease 0.9s forwards;
 }
 
 .header-name .title::before {
@@ -134,7 +171,32 @@ body {
   opacity: 0.5;
 }
 
-.header-contact {
+/* Blinking cursor after the typewriter text */
+.typewriter::after {
+  content: '▋';
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent);
+  animation: blink 1.1s step-end infinite;
+  animation-delay: 1.5s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cursorAppear {
+  to { opacity: 1; }
+}
+
+/* Trigger cursor visibility after title fades in */
+.header-name .title {
+  animation: fadeIn 0.5s ease 0.9s forwards;
+}
+
+.typewriter::after {
+  animation: cursorAppear 0s 1.4s forwards, blink 1.1s step-end 1.4s infinite;
+}
+
+.anim-hero-contact {
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -144,15 +206,32 @@ body {
   color: var(--muted-lt);
   flex-shrink: 0;
   padding-bottom: 0.15rem;
+  opacity: 0;
+  animation: fadeIn 0.6s ease 1.1s forwards;
 }
 
-.header-contact a {
+.anim-hero-contact a {
   color: var(--link);
   text-decoration: none;
   transition: color 0.15s;
 }
 
-.header-contact a:hover { color: var(--text-bright); }
+.anim-hero-contact a:hover { color: var(--text-bright); }
+
+/* =====================================================================
+   SCROLL REVEAL
+   ===================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* =====================================================================
    MAIN / SECTIONS
@@ -219,7 +298,17 @@ body {
   padding: 0.3rem 0.8rem;
   border-radius: 3px;
   letter-spacing: 0.04em;
-  transition: border-color 0.15s, background 0.15s;
+  /* stagger applied via JS */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease,
+              border-color 0.15s, background 0.15s;
+}
+
+/* Chips become visible once parent section is revealed */
+.revealed .skills-list li {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .skills-list li:hover {
@@ -234,6 +323,14 @@ body {
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--border);
+  border-left: 2px solid transparent;
+  padding-left: 0;
+  transition: border-left-color 0.25s ease, padding-left 0.25s ease;
+}
+
+.job:hover {
+  border-left-color: rgba(0,201,167,0.4);
+  padding-left: 0.75rem;
 }
 
 .job.last-job {
@@ -435,7 +532,7 @@ body {
     gap: 1.25rem;
   }
 
-  .header-contact {
+  .anim-hero-contact {
     text-align: left;
   }
 
@@ -449,8 +546,7 @@ body {
 
   .section-label {
     font-size: 0.62rem;
-    border-left: 2px solid var(--accent);
-    border-left-color: rgba(0,201,167,0.4);
+    border-left: 2px solid rgba(0,201,167,0.4);
     padding-left: 0.6rem;
   }
 
@@ -470,4 +566,36 @@ body {
 
 @media (max-width: 420px) {
   :root { --pad-x: 1.1rem; }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .anim-hero-name,
+  .anim-hero-cjk,
+  .header-name .title,
+  .anim-hero-contact {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .skills-list li {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  #site-header::after {
+    animation: none;
+  }
+
+  .typewriter::after {
+    animation: blink 1.1s step-end infinite;
+  }
 }

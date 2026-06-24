@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jason Lim – Junior DevOps Engineer resume" />
+  <meta name="description" content="Jason Lim – DevOps Engineer resume" />
   <title>Jason Lim | DevOps Engineer</title>
   <link rel="stylesheet" href="resume.css" />
 </head>
@@ -14,10 +14,10 @@
     <header id="site-header">
       <div class="header-inner">
         <div class="header-name">
-          <h1>Jason Lim<span class="name-cjk">林田融</span></h1>
-          <p class="title">Junior DevOps Engineer</p>
+          <h1 class="anim-hero-name">Jason Lim<span class="name-cjk anim-hero-cjk">林田融</span></h1>
+          <p class="title anim-hero-title"><span class="typewriter">Junior DevOps Engineer</span></p>
         </div>
-        <div class="header-contact">
+        <div class="header-contact anim-hero-contact">
           <a href="mailto:ltr.jason@gmail.com">ltr.jason@gmail.com</a>
           <span>(65) 9126 9863</span>
         </div>
@@ -26,14 +26,14 @@
 
     <main id="resume">
 
-      <section class="resume-section" aria-label="Profile">
+      <section class="resume-section reveal" aria-label="Profile">
         <h2 class="section-label"><span class="label-num">01</span>Profile</h2>
         <div class="section-body">
           <p class="profile-text">Junior tinkering with things. Eager to learn.</p>
         </div>
       </section>
 
-      <section class="resume-section" aria-label="Technical Skills">
+      <section class="resume-section reveal" aria-label="Technical Skills">
         <h2 class="section-label"><span class="label-num">02</span>Technical</h2>
         <div class="section-body">
           <ul class="skills-list">
@@ -49,7 +49,7 @@
         </div>
       </section>
 
-      <section class="resume-section" aria-label="Experience">
+      <section class="resume-section reveal" aria-label="Experience">
         <h2 class="section-label"><span class="label-num">03</span>Experience</h2>
         <div class="section-body">
 
@@ -120,7 +120,7 @@
         </div>
       </section>
 
-      <section class="resume-section" aria-label="Education">
+      <section class="resume-section reveal" aria-label="Education">
         <h2 class="section-label"><span class="label-num">04</span>Education</h2>
         <div class="section-body">
           <div class="edu-entry">
@@ -135,7 +135,7 @@
         </div>
       </section>
 
-      <section class="resume-section last-section" aria-label="Certifications">
+      <section class="resume-section last-section reveal" aria-label="Certifications">
         <h2 class="section-label"><span class="label-num">05</span>Certifications</h2>
         <div class="section-body">
           <ul class="cert-list">
@@ -159,5 +159,23 @@
   </div>
 
   <script src="webcounter.js"></script>
+  <script>
+    // Scroll-reveal: sections slide up on enter
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Stagger skill chips
+    document.querySelectorAll('.skills-list li').forEach((chip, i) => {
+      chip.style.transitionDelay = `${i * 60}ms`;
+    });
+  </script>
 </body>
 </html>

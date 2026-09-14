@@ -5,13 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Jason Lim – DevOps Engineer resume" />
   <title>Jason Lim | DevOps Engineer</title>
-  <link rel="stylesheet" href="resume.css?v=2026-09-14" />
+  <link rel="stylesheet" href="resume.css?v=2026-09-15" />
+  <script>
+    // Apply saved theme before first paint to avoid a flash of the wrong theme
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 
   <div id="page">
 
     <header id="site-header">
+      <button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Switch to light theme">
+        <span class="switch-icon switch-moon" aria-hidden="true">☾</span>
+        <span class="switch-icon switch-sun" aria-hidden="true">☀</span>
+        <span class="switch-knob" aria-hidden="true"></span>
+      </button>
       <div class="header-inner">
         <div class="header-name">
           <h1 class="anim-hero-name">Jason Lim<span class="name-cjk anim-hero-cjk">林田融</span></h1>
@@ -221,6 +235,25 @@
     document.querySelectorAll('.skills-list li').forEach((chip, i) => {
       chip.style.transitionDelay = `${i * 60}ms`;
     });
+
+    // Light / dark theme sliding switch (persists the choice in this browser)
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const isLight = () => root.getAttribute('data-theme') === 'light';
+      function render() {
+        if (!btn) return;
+        btn.setAttribute('aria-checked', String(isLight()));
+        btn.setAttribute('aria-label', isLight() ? 'Switch to dark theme' : 'Switch to light theme');
+      }
+      render();
+      if (btn) btn.addEventListener('click', () => {
+        const next = isLight() ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        render();
+      });
+    })();
   </script>
 </body>
 </html>

@@ -32,6 +32,83 @@
   --pad-y:     2.5rem;
 }
 
+/* ----- Light theme (activated by data-theme="light" on <html>) ----- */
+:root[data-theme="light"] {
+  --bg:           #eef1f6;
+  --surface:      #ffffff;
+  --surface-alt:  #f5f7fa;
+  --border:       #e3e8f0;
+  --border-lt:    #d3dce6;
+
+  --text:         #3a4a5c;
+  --text-bright:  #16202b;
+  --muted:        #8496a8;
+  --muted-lt:     #5f7085;
+
+  --accent:       #0f766e;
+  --accent-dim:   rgba(15, 118, 110, 0.07);
+  --accent-border:rgba(15, 118, 110, 0.28);
+  --gold:         #b8791f;
+  --link:         #2563eb;
+}
+
+/* Softer, lighter drop shadow for the page card in light mode */
+:root[data-theme="light"] #page {
+  box-shadow:
+    0 0 0 1px rgba(15, 118, 110, 0.05),
+    0 4px 20px rgba(20, 32, 45, 0.10),
+    0 18px 48px rgba(20, 32, 45, 0.08);
+}
+
+/* ----- Theme toggle (sliding switch) ----- */
+.theme-switch {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  z-index: 3;
+  width: 3.4rem;
+  height: 1.65rem;
+  padding: 0;
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  background: var(--accent-dim);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.theme-switch:hover { border-color: var(--accent); }
+.theme-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Sun / moon hints at the track ends */
+.switch-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.switch-moon { left: 0.45rem; }
+.switch-sun  { right: 0.45rem; }
+
+/* Sliding knob */
+.switch-knob {
+  position: absolute;
+  top: 50%;
+  left: 0.2rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateY(-50%);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+:root[data-theme="light"] .switch-knob {
+  transform: translateY(-50%) translateX(1.75rem);
+}
+
 /* ----- Reset ----- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -356,9 +433,9 @@ body {
   letter-spacing: -0.2px;
 }
 
-.job-role {
+.job-meta .job-role {
   font-family: var(--font-mono);
-  font-size: 0.73rem;
+  font-size: 0.68rem;
   color: var(--accent);
   letter-spacing: 0.06em;
   margin-top: 0.2rem;

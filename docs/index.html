@@ -71,8 +71,8 @@
             <details class="job-more">
               <summary>Project details</summary>
               <ul class="job-detail-list">
-                <li>Building and managing Azure cloud infrastructure on GCC to support development and production workloads for the HSS (Hosted Self Service) platform.</li>
-                <li>Automating build and deployment workflows through GitLab (SHIP-HATS) CI/CD pipelines to improve delivery speed and reliability.</li>
+                <li>Build and own the Terraform IaC and GitLab (SHIP-HATS) CI/CD that provision the Azure GCC integration backbone — Logic Apps, API Management, App Gateway, Service Bus, Function Apps, Storage — for a self-serve platform that abstracts day-2 cloud operations behind ITSM.</li>
+                <li>Provision cloud resources and write per-module deployment pipelines as teams onboard; Logic Apps expose APIs bridging Azure Resource Manager with JSM (Jira Service Management), so module owners build workflow/function logic on the automation instead of managing infrastructure.</li>
               </ul>
             </details>
           </div>
@@ -82,7 +82,7 @@
               <div class="job-meta">
                 <h3 class="job-company">Infocepts Pte Ltd</h3>
                 <p class="job-role">Cloud DevOps Infra Engineer</p>
-                <p class="job-client"><span class="client-name">Ministry of Social &amp; Family Development</span> · Databricks implementation</p>
+                <p class="job-client"><span class="client-name">Ministry of Social &amp; Family Development</span> · MSF Datasphere (Databricks)</p>
               </div>
               <span class="job-dates">Apr 2025 – Mar 2026</span>
             </div>
@@ -91,9 +91,9 @@
             <details class="job-more">
               <summary>Project details</summary>
               <ul class="job-detail-list">
-                <li>Maintained CI/CD pipelines and performed EC2 Linux patching to keep the Databricks platform available and security-compliant.</li>
-                <li>Provisioned and managed AWS infrastructure as code with Terraform on GCC.</li>
-                <li>Resolved security and compliance findings across AWS accounts through root cause analysis.</li>
+                <li>Built the CI/CD and source-control workflow deploying Databricks pipelines for MSF Datasphere, enabling 6 data engineers to iterate in non-prod and promote identical pipelines to production across 3 live data marts.</li>
+                <li>Provisioned Databricks compute and AWS infrastructure as code (Terraform) on GCC; performed EC2 Linux patching and resolved security and compliance findings through root cause analysis.</li>
+                <li>Onboarded heterogeneous ingestion sources (CSV, Excel, SFTP) and troubleshot pipeline failures, including PySpark (Parquet-splitting) transformations.</li>
               </ul>
             </details>
           </div>
@@ -112,9 +112,8 @@
             <details class="job-more">
               <summary>Project details</summary>
               <ul class="job-detail-list">
-                <li>Resolved 5+ daily build and deployment incidents across Jenkins and Octopus Deploy pipelines for the Darwin HR Benefits App.</li>
-                <li>Automated operational workflows using PowerShell, Bash, and Python scripts.</li>
-                <li>Monitored cloud and virtual infrastructure (AWS EC2, VMware, vSphere) for reliability.</li>
+                <li>Supported daily build and deployment operations across Jenkins and Octopus Deploy pipelines (log-based triage and re-runs) for the Darwin HR Benefits App.</li>
+                <li>Automated operational tasks with PowerShell, Bash, and Python; monitored AWS EC2 and VMware vSphere infrastructure.</li>
               </ul>
             </details>
           </div>
@@ -133,9 +132,9 @@
             <details class="job-more">
               <summary>Project details</summary>
               <ul class="job-detail-list">
-                <li>Monitored Kubernetes clusters (EKS Fargate) via CloudWatch and resolved incidents and GitOps issues with ArgoCD for the NPHC platform.</li>
-                <li>Deployed infrastructure as code with Terraform and maintained CI/CD pipelines in Bamboo and GitLab.</li>
-                <li>Supported an agile scrum team of 10 developers with operational and change management needs.</li>
+                <li>Set up AWS EKS Fargate clusters and ArgoCD GitOps across 4 environments (dev, UAT, staging, prod; two AWS accounts) for a ~6-service microservices application, using Terraform modules.</li>
+                <li>Configured AWS App Mesh (Envoy sidecars, wildcard-cert pod DNS) for pod-to-pod mTLS and validated inter-service connectivity; set up CPU-based horizontal pod autoscaling.</li>
+                <li>Operated a Git-manifest release and rollback flow (image-tag commits via ArgoCD auto-sync) with CloudWatch monitoring; supported an agile scrum team of 10.</li>
               </ul>
             </details>
           </div>

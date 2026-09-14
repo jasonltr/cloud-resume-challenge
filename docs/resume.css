@@ -387,6 +387,82 @@ body {
   color: var(--muted-lt);
 }
 
+/* ----- Expandable per-job detail (native <details>, no JS) ----- */
+.job-more {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.6rem;
+}
+
+.job-more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color 0.2s ease;
+  user-select: none;
+}
+.job-more summary::-webkit-details-marker { display: none; }
+.job-more summary::before {
+  content: "\25B8";            /* ▸ */
+  display: inline-block;
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+}
+.job-more[open] summary::before { transform: rotate(90deg); }
+.job-more summary:hover,
+.job-more summary:focus-visible { color: var(--text-bright); outline: none; }
+
+.job-detail-list {
+  list-style: none;
+  margin: 0.65rem 0 0.15rem;
+  padding: 0;
+}
+.job-detail-list li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--muted-lt);
+  margin-bottom: 0.4rem;
+}
+.job-detail-list li::before {
+  content: "\25B8";            /* ▸ */
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  color: var(--accent);
+  font-size: 0.72rem;
+}
+
+/* Smooth expand where the browser supports it; instant + fully functional elsewhere */
+@supports (interpolate-size: allow-keywords) {
+  :root { interpolate-size: allow-keywords; }
+  .job-more::details-content {
+    block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: block-size 0.3s ease, opacity 0.3s ease,
+                content-visibility 0.3s allow-discrete;
+  }
+  .job-more[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .job-more summary::before,
+  .job-more::details-content { transition: none; }
+}
+
 /* =====================================================================
    EDUCATION
    ===================================================================== */

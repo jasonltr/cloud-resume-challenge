@@ -364,6 +364,14 @@ body {
   margin-top: 0.2rem;
 }
 
+.job-client {
+  font-size: 0.8rem;
+  color: var(--muted-lt);
+  margin-top: 0.35rem;
+}
+
+.job-client .client-name { font-weight: 600; color: var(--text-bright); }
+
 .job-dates {
   font-family: var(--font-mono);
   font-size: 0.7rem;

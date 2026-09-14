@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jason Lim — CV</title>
+  <style>
+    /* =====================================================================
+       JASON LIM — GENERIC PRINT / ATS-FRIENDLY CV  (one-page A4)
+       Render to PDF: File → Print → Save as PDF (Margins: None,
+       Background graphics: On), or use the button (hidden when printing).
+       ===================================================================== */
+
+    :root { --ink:#1b1b1b; --body:#333; --muted:#5c5c5c; --faint:#7a7a7a; --accent:#0f766e; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Arial,"Helvetica Neue",Helvetica,system-ui,sans-serif; color:var(--body); line-height:1.4; background:#f2f2f2; font-size:10.5pt; -webkit-font-smoothing:antialiased; }
+    .sheet { width:210mm; min-height:297mm; margin:24px auto; padding:14mm 15mm; background:#fff; box-shadow:0 2px 18px rgba(0,0,0,.14); }
+    a { color:var(--accent); text-decoration:none; }
+
+    header { margin-bottom:6px; }
+    .name { font-size:20pt; font-weight:700; color:var(--ink); letter-spacing:.2px; line-height:1.1; }
+    .role-title { font-size:10.5pt; color:var(--accent); font-weight:600; margin-top:2px; letter-spacing:.3px; }
+    .contact { margin-top:5px; font-size:8.8pt; color:var(--muted); }
+    .contact span { white-space:nowrap; }
+    .contact .sep { color:var(--faint); margin:0 6px; }
+    .summary { margin-top:6px; font-size:9pt; color:var(--body); line-height:1.35; }
+
+    section { margin-top:7px; }
+    .sec-head { display:flex; align-items:center; gap:9px; border-bottom:1.5px solid var(--accent); padding-bottom:3px; margin-bottom:5px; }
+    .sec-num { font-size:8pt; font-weight:700; color:var(--accent); font-family:"Courier New",monospace; }
+    .sec-title { font-size:10pt; font-weight:700; color:var(--ink); text-transform:uppercase; letter-spacing:1.2px; }
+
+    .skills-grid { display:grid; grid-template-columns:max-content 1fr; row-gap:2px; column-gap:14px; font-size:9.2pt; }
+    .skills-grid dt { font-weight:700; color:var(--ink); }
+    .skills-grid dd { color:var(--body); }
+
+    .job { margin-bottom:5px; }
+    .job:last-child { margin-bottom:0; }
+    .job-head { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+    .job-company { font-size:10pt; font-weight:700; color:var(--ink); }
+    .job-role { font-size:9.3pt; color:var(--accent); font-weight:600; }
+    .job-dates { font-size:8.8pt; color:var(--faint); white-space:nowrap; font-family:"Courier New",monospace; flex-shrink:0; }
+    .job-client { font-size:9pt; color:var(--muted); font-style:italic; margin-top:1px; }
+    .job ul { list-style:none; margin-top:2px; }
+    .job li { position:relative; padding-left:11px; font-size:9.2pt; color:var(--body); line-height:1.3; margin-bottom:1px; }
+    .job li::before { content:"\2013"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+    .job.compact p { font-size:9.2pt; color:var(--body); margin-top:2px; }
+
+    .edu-school { font-size:10pt; font-weight:700; color:var(--ink); }
+    .edu-line, .cert-line { display:flex; justify-content:space-between; gap:12px; font-size:9.2pt; color:var(--body); margin-top:2.5px; }
+    .edu-line .when, .cert-line .when { color:var(--faint); white-space:nowrap; font-family:"Courier New",monospace; font-size:8.8pt; flex-shrink:0; }
+
+    .print-btn { position:fixed; top:18px; right:18px; z-index:10; padding:9px 16px; background:var(--accent); color:#fff; border:none; border-radius:6px; font-size:10pt; font-weight:600; cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,.2); }
+    .print-btn:hover { background:#0c5f58; }
+
+    @page { size:A4; margin:0; }
+    @media print {
+      body { background:#fff; font-size:9.3pt; }
+      .sheet { width:auto; min-height:auto; margin:0; padding:5mm 12mm; box-shadow:none; }
+      .print-btn { display:none !important; }
+      .job { page-break-inside:avoid; }
+      * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn" onclick="window.print()">Save as PDF</button>
+
+  <div class="sheet">
+
+    <header>
+      <div class="name">Jason Lim</div>
+      <div class="role-title">Cloud DevOps &amp; Infrastructure Engineer</div>
+      <div class="contact">
+        <span>Singapore</span><span class="sep">·</span>
+        <span>(65) 9126 9863</span><span class="sep">·</span>
+        <span><a href="mailto:ltr.jason@gmail.com">ltr.jason@gmail.com</a></span><span class="sep">·</span>
+        <span><a href="https://linkedin.com/in/ltr12345">linkedin.com/in/ltr12345</a></span><span class="sep">·</span>
+        <span><a href="https://www.jasonltr.com">jasonltr.com</a></span>
+      </div>
+      <p class="summary">
+        Cloud DevOps / Infrastructure Engineer with 4+ years across AWS and Azure, including Government Commercial
+        Cloud (GCC). Kubernetes (EKS, ArgoCD GitOps, App Mesh), Terraform IaC, and CI/CD for application and
+        Databricks data platforms — a reliable operator focused on correct, resilient delivery.
+      </p>
+    </header>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Skills</span></div>
+      <dl class="skills-grid">
+        <dt>Languages</dt><dd>Python, SQL, Bash, PowerShell</dd>
+        <dt>Orchestration &amp; IaC</dt><dd>Kubernetes (EKS / Fargate), ArgoCD, AWS App Mesh, Docker, Terraform, Ansible</dd>
+        <dt>CI/CD</dt><dd>GitLab (SHIP-HATS), Bamboo, Jenkins, Octopus Deploy, Azure DevOps</dd>
+        <dt>Cloud</dt><dd>AWS, Azure (incl. Government Commercial Cloud)</dd>
+        <dt>Data &amp; Observability</dt><dd>Databricks (Delta Lake, Unity Catalog), PySpark, ETL; CloudWatch, monitoring, RCA</dd>
+        <dt>OS</dt><dd>Linux (Ubuntu / CentOS / RHEL), Windows</dd>
+      </dl>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Experience</span></div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-company">NCS Pte Ltd</span>&nbsp;<span class="job-role">Cloud DevOps Infrastructure Engineer</span></div>
+          <span class="job-dates">May 2026 – Present</span>
+        </div>
+        <div class="job-client">GovTech · HSS (Hosted Self Service) cloud services platform</div>
+        <ul>
+          <li>Build and own the Terraform Infrastructure as Code and GitLab (SHIP-HATS) CI/CD that provision the Azure GCC integration backbone — Logic Apps, API Management, App Gateway, Service Bus, Functions, Storage — for a self-serve platform that abstracts day-2 cloud operations behind ITSM.</li>
+          <li>Provision cloud resources and write per-module deployment pipelines as teams onboard; Logic Apps expose APIs bridging Azure Resource Manager with JSM (Jira Service Management), so module owners build workflow/function logic on the automation instead of managing infrastructure.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-company">Infocepts Pte Ltd</span>&nbsp;<span class="job-role">Cloud DevOps Infrastructure Engineer</span></div>
+          <span class="job-dates">Apr 2025 – Mar 2026</span>
+        </div>
+        <div class="job-client">Ministry of Social &amp; Family Development · MSF Datasphere (Databricks)</div>
+        <ul>
+          <li>Built platform-as-code (GitLab CI/CD, Terraform) for the MSF Datasphere Databricks lakehouse (Delta Lake): automated Unity Catalog access, Databricks job/resource permissions (ACLs), and multi-environment cluster provisioning with group-based (RBAC) access control.</li>
+          <li>Ran the source-control and CI/CD workflow that let 6 data engineers promote pipelines from non-prod to production across 3 live data marts (CSV, Excel, SFTP) on AWS GCC; performed EC2 Linux patching, resolved security/compliance findings (RCA), and troubleshot PySpark (Parquet) failures.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-company">Mercer</span>&nbsp;<span class="job-role">Cloud DevOps Infrastructure Engineer</span></div>
+          <span class="job-dates">Jan 2024 – Mar 2025</span>
+        </div>
+        <div class="job-client">Darwin · HR Benefits App</div>
+        <ul>
+          <li>Supported daily build and deployment operations across Jenkins and Octopus Deploy CI/CD pipelines (log-based triage and re-runs); automated operational tasks with PowerShell, Bash, and Python and monitored AWS EC2 and VMware vSphere infrastructure.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-company">NCS Pte Ltd</span>&nbsp;<span class="job-role">Cloud DevOps Infrastructure Engineer</span></div>
+          <span class="job-dates">Jun 2022 – Dec 2023</span>
+        </div>
+        <div class="job-client">Ministry of Health · NPHC (National Platform for Healthcare Claims)</div>
+        <ul>
+          <li>Set up AWS EKS Fargate clusters and ArgoCD GitOps across 4 environments (dev, UAT, staging, prod; split over two AWS accounts) for a ~6-service microservices application, using Terraform modules.</li>
+          <li>Configured AWS App Mesh (Envoy sidecars, wildcard-cert pod DNS) for pod-to-pod mTLS and validated inter-service connectivity; set up CPU-based horizontal pod autoscaling.</li>
+          <li>Operated a Git-manifest release and rollback flow (image-tag commits via ArgoCD auto-sync) with CloudWatch monitoring; supported an agile scrum team of 10.</li>
+        </ul>
+      </div>
+
+      <div class="job compact">
+        <div class="job-head">
+          <div><span class="job-company">Generation Singapore</span>&nbsp;<span class="job-role">Cloud DevOps Trainee</span></div>
+          <span class="job-dates">Jan 2022 – May 2022</span>
+        </div>
+        <p>Foundational cloud and DevOps training: Linux, Python, Bash, Git, Docker, Ansible, and Terraform.</p>
+      </div>
+
+      <div class="job compact">
+        <div class="job-head">
+          <div><span class="job-company">Shopee | Keppel Logistics</span>&nbsp;<span class="job-role">Non-Tech Roles</span></div>
+          <span class="job-dates">Jul 2019 – Nov 2021</span>
+        </div>
+        <p>Automated collection of 500+ web profiles with Python and Selenium (headless, human-like throttling) to study competitor hiring patterns; built ETL data pipelines (SQL) and led a warehouse operations team of 18.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Education</span></div>
+      <div class="edu-school">Nanyang Technological University</div>
+      <div class="edu-line"><span>Master of Science, Supply Chain &amp; Logistics — GPA 4.69 / 5</span><span class="when">Aug 2014 – Dec 2018</span></div>
+      <div class="edu-line"><span>Bachelor of Engineering, Aerospace Engineering — GPA 4.28 / 5, Second Class (Upper) Honours</span></div>
+      <div class="edu-line"><span>Nanyang Scholarship Recipient</span></div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Certifications</span></div>
+      <div class="cert-line"><span>GitLab Certified Associate &middot; Microsoft Certified: Azure Fundamentals (AZ-900)</span><span class="when">2022</span></div>
+    </section>
+
+  </div>
+</body>
+</html>
